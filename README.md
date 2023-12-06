@@ -1,4 +1,4 @@
-# LL3DA: Large Language 3D Assistant
+# M3DBench: A conprehensive 3D instruction-following dataset
 
 This is the repository that contains the source code for the [M3DBench project page](https://m3dbench.github.io/).
 
