@@ -200,7 +200,11 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recently, 3D understanding has become popular to facilitate autonomous agents to perform further decision making. However, existing 3D datasets and methods are often limited to specific tasks. On the other hand, recent progress in Large Language Models (LLMs) and Multi-modal Language Models (MLMs) have demonstrated exceptional general language and imagery tasking performance. Therefore, it is interesting to unlock MLM's potential to be 3D generalist for wider tasks. However, current MLMs' research has been less focused on 3D-centric tasks due to a lack of large-scale 3D instruction-following datasets. In this work, we introduce a comprehensive 3D instruction-following benchmark dataset called M3DBench, which possesses the following characteristics: 1) It supports general multi-modal instructions interleaved with text, images, 3D objects, and more. 2) It unifies diverse 3D tasks, covering a variety of fundamental abilities in real-world 3D environments. 3) It is the largest 3D instruction-following dataset with over 320k instruction-response pairs to the best of our knowledge. Additionally, we present a simple baseline model based on LLMs for M3DBench. Extensive experiments demonstrate the effectiveness of our dataset and baseline can support general 3D understanding tasks which can inspire future research. The dataset and codebase will be released upon acceptance.
+            Recently, 3D understanding has become popular to facilitate autonomous agents to perform further decision-making. However, existing 3D datasets and methods are often limited to specific tasks. On the other hand, recent progress in Large Language Models (LLMs) and Multi-modal Language Models (MLMs) have demonstrated exceptional general language and imagery tasking performance. Therefore, it is interesting to unlock MLM's potential to be 3D generalist for wider tasks.
+            However, current MLMs' research has been less focused on 3D tasks due to a lack of large-scale 3D instruction-following datasets.
+            In this work, we introduce a comprehensive 3D instruction-following benchmark dataset called M3DBench, which possesses the following characteristics: 1) It supports general multi-modal instructions interleaved with text, images, 3D objects, and other visual prompts. 2) It unifies diverse 3D tasks, covering a variety of fundamental abilities in real-world 3D environments. 3) It is a large-scale 3D instruction-following dataset with over 320k instruction-response pairs.
+            Additionally, we present a simple baseline model based on LLMs for M3DBench.
+            Extensive experiments demonstrate the effectiveness of our dataset and  baseline, supporting general 3D-centric tasks, which can inspire future research. 
           </p>
         </div>
       </div>
@@ -227,13 +231,10 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Method</h2>
+        <h2 class="title is-3">Baseline</h2>
         <div class="content has-text-justified">
           <p>
-            Overview of the Proposed Approach. 
-            (a) The overall pipeline of our proposed LL3DA first extracts interaction-aware 3D scene embeddings, which are later projected to the prefix of textual instructions as the input of a frozen LLM. 
-            (b) The detailed design of the Interactor3D, which aggregates visual prompts, textual instructions, and 3D scene embeddings into a fixed length querying tokens. 
-            (c) The prompt encoder encodes the user clicks and box coordinates with the positional embeddings and ROI features, respectively.
+            Overview of our baseline model. We utilize scene perceiver to extract scene tokens from 3D visual input. Multi-modal instructions are transformed into corresponding instruction tokens via their respective encoders. The scene tokens and multi-modal instruction tokens are then concatenated and fed into a frozen LLM, which generates the corresponding responses subsequently. During the training process, only the projectors are updated.
           </p>
           <centering>
             <div style="text-align: center;">
@@ -372,15 +373,17 @@
         <div class="content has-text-justified">
           <p>
             There are also excellent concurrent works, including: 
+            <a href="https://arxiv.org/abs/2306.06687">LAMM</a>, 
             <a href="https://arxiv.org/abs/2307.12981">3D-LLM</a>, 
-            <a href="https://arxiv.org/abs/2311.12871">LEO</a>,
+            <a href="https://arxiv.org/abs/2308.08769">Chat-3D</a>, 
+            <a href="https://arxiv.org/abs/2309.00615">Point-Bind & Point-LLM</a>,
             <a href="http://arxiv.org/abs/2308.16911">PointLLM</a>
-            , and <a href="https://arxiv.org/pdf/2309.00615.pdf">Point-Bind & Point-LLM</a>.
+            , and <a href="https://arxiv.org/abs/2311.12871">LEO</a>.
           </p>
-          <p>
+<!--           <p>
             You might find many more by the time you are checking this 
             <a href="https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models">repo</a>.
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
@@ -390,7 +393,7 @@
 </section>
 
 
-<section class="section" id="BibTeX">
+<!-- <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@misc{chen2023ll3da,
@@ -402,10 +405,10 @@
     primaryClass={cs.CV}
 }</code></pre>
   </div>
-</section>
+</section> -->
 
 
-<footer class="footer">
+<!-- <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
@@ -435,7 +438,7 @@
       </div>
     </div>
   </div>
-</footer>
+</footer> -->
 
 </body>
 </html>
