@@ -247,30 +247,33 @@
   </div>
 </section>
 
-
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
+
+    <!-- Animation. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Baseline</h2>
+        <h2 class="title is-3">Dataset</h2>
         <div class="content has-text-justified">
           <p>
-            We introduce a baseline model that connects scenes with interleaved multi-modal instructions and accomplishes diverse tasks using a unified decoder. 
-            Specifically, we utilize scene perceiver to extract scene tokens from 3D visual input. Multi-modal instructions are transformed into corresponding instruction tokens via their respective encoders. The scene tokens and multi-modal instruction tokens are then concatenated and fed into a frozen LLM, which generates the corresponding responses subsequently. During the training process, only the projectors are updated.
+           <b>Comparison between M3DBench and other 3D VL datasets as well as 3D instruction datasets.</b>
+           M3DBench has the following characteristics: 1) A comprehensive instruction-following dataset tailored for 3D scenes. 
+           2) Supporting multi-modal instructions that interleave text, coordinate, image, 3D object, and so on. 
+           3) Encompassing diverse 3D visual-centric tasks that span a variety of fundamental abilities in real-world 3D environments, such as visual perception, scene understanding, spatial reasoning, navigation, and planning.
           </p>
           <centering>
             <div style="text-align: center;">
-              <img id="pipeline" width="100%" src="static/images/pipeline.png">
+              <img id="pipeline" width="100%" src="static/images/comparison.png">
             </div>
           </centering>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
+    <!--/ Animation. -->
 
   </div>
 </section>
+
 
 
 <section class="section">
@@ -279,7 +282,7 @@
     <!-- Animation. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Dataset</h2>
+        <h2 class="title is-5">Demo</h2>
       </div>
     </div>
     <!--/ Animation. -->
@@ -320,6 +323,33 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+
+  
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Baseline</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce a baseline model that connects scenes with interleaved multi-modal instructions and accomplishes diverse tasks using a unified decoder. 
+            Specifically, we utilize scene perceiver to extract scene tokens from 3D visual input. Multi-modal instructions are transformed into corresponding instruction tokens via their respective encoders. The scene tokens and multi-modal instruction tokens are then concatenated and fed into a frozen LLM, which generates the corresponding responses subsequently. During the training process, only the projectors are updated.
+          </p>
+          <centering>
+            <div style="text-align: center;">
+              <img id="pipeline" width="100%" src="static/images/pipeline.png">
+            </div>
+          </centering>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
   </div>
 </section>
 
