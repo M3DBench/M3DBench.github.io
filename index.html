@@ -33,6 +33,9 @@
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"> 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -518,7 +521,7 @@
 
 
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -587,8 +590,113 @@
       </div>
     </div>
   </div>
+</section> -->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+  <!-- <div class="container" id="main"> -->
+    <!-- Nr3D table -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Benchmark</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>Utilizing the M3DBench benchmark, we aim to evaluate and report the capabilities of large models in real-world 3D environments.</b> The benchmark comprises approximately 1,500 pairs of instruction-response pairs, encompassing both regional and scene-level tasks such as object localization, scene description, multi-round dialogue, planning, and more.
+          </p>
+        </div>
+        <style>
+            #nr3d_table {
+                border: none;
+                width:100%; 
+                border-collapse: collapse;
+            }
+            #nr3d_table th, #nr3d_table td {
+                border-left: none;
+                border-right: none;
+                text-align: center;
+            }
+            #nr3d_table th:first-child, #nr3d_table td:first-child {
+                text-align: left;
+            }
+        </style>
+        <table id="nr3d_table" class="table table-bordered">
+            <thead>
+                <tr style="font-weight: bold;">
+                    <th style="text-align: left;">Method</th>
+                    <th>OL(ACC@0.25)</th>
+                    <th>DC(C)</th>
+                    <th>VQA(C)</th>
+                    <th>EQA(C)</th>
+                    <th>MR(C)</th>
+                    <th>EP(C)</th>
+                    <th>SD(GPT4)</th>
+                    <th>MD(GPT4)</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-left" style="white-space: nowrap;">OPT-6.7B(PN++)</td>
+                    <td>3.09</td>
+                    <td>17.01</td>
+                    <td>336.96</td>
+                    <td>212.12</td>
+                    <td>363.87</td>
+                    <td>133.94</td>
+                    <td>9.87</td>
+                    <td>40.97</td>
+                </tr>
+                <tr>
+                    <td class="text-left" style="white-space: nowrap;">LLaMA-2-7B(PN++)</td>
+                    <td>1.60</td>
+                    <td>22.05</td>
+                    <td><b>379.05</b></td>
+                    <td>194.09</td>
+                    <td><b>378.17</b></td>
+                    <td><b>253.09</b></td>
+                    <td><b>27.89</b></td>
+                    <td><b>44.74</b></td>
+                </tr>
+                <tr>
+                  <td class="text-left" style="white-space: nowrap;">OPT-6.7B(TR)</td>
+                  <td>1.22</td>
+                  <td><b>23.76</b></td>
+                  <td>365.60</td>
+                  <td><b>218.01</b></td>
+                  <td>240.89</td>
+                  <td>213.15</td>
+                  <td>16.84</td>
+                  <td>29.52</td>
+
+              </tr>
+              <tr>
+                  <td class="text-left" style="white-space: nowrap;">LLaMA-2-7B(TR)</td>
+                  <td><b>3.57</b></td>
+                  <td>20.72</td>
+                  <td>356.42</td>
+                  <td>179.33</td>
+                  <td>351.96</td>
+                  <td>114.91</td>
+                  <td>27.37</td>
+                  <td>38.61</td>
+                  
+              </tr>
+                <!-- Repeat this structure to add more rows -->
+            </tbody>
+        </table>
+        <div class="content has-text-justified">
+          <p style="font-size: 11px;">
+            *OL represents the model's ability for Object Localization, DC stands for Dense Caption, VQA for Visual Question Answering, EQA for Embodied Question Answering, MR for Multi-region Reasoning, EP for Planning. SD and MD denote Scene Description andMulti-round Dialogue, respectively.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
+  
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
@@ -658,4 +766,31 @@
 </footer>
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#nr3d_table').DataTable({
+            columnDefs: [ // disable sorting of the first column
+                {orderable: false, targets: 0}
+            ],
+            "order": [[1, "desc"]], // Default Ordering on the overall column
+            searching: false, // Disable search bar
+            paging: false, // Stop pagination for now
+            info: false // hide "Showing 1 to M of N entries" line
+        });
+
+        $('#sr3d_table').DataTable({
+            columnDefs: [ // disable sorting of the first column
+                {orderable: false, targets: 0}
+            ],
+            "order": [[1, "desc"]], // Default Ordering on the overall column
+            searching: false, // Disable search bar
+            paging: false, // Stop pagination for now
+            info: false // hide "Showing 1 to M of N entries" line
+        });
+    })
+</script>
 </html>
